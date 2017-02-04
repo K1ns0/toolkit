@@ -32,7 +32,7 @@ def main():
         print genkey(int(sys.argv[2]))
     else:
         seed = raw_input('seed: ')
-        seed = int(seed.encode('hex')) % max_int
+        seed = int(seed.encode('hex'), 16) % max_int
         print genkey(input("len: "))
 
 if __name__ == '__main__':
