@@ -2,7 +2,8 @@ import string
 import sys
 
 charset = string.letters + string.digits
-charset += '!@#$%^&*()'
+charset += '!@#$%^&*()!@#$%^&*()'
+# increase special chars' probability
 
 setlen = len(charset)
 
@@ -15,11 +16,11 @@ D = 1298
 
 max_int = 2147483647
 
-def pse_random(mini=0, maxi=setlen):
+def pse_random(maxi=setlen):
     global seed
     seed = (seed * seed * seed * A + seed *
             seed * B + seed * C + D) % max_int
-    return seed % (maxi - mini) + mini
+    return seed % maxi
 
 def genkey(klen):
     return ''.join([charset[pse_random()] for i in range(klen)])
